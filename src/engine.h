@@ -102,7 +102,7 @@ public:
   template <typename Expr> struct ExpressionResultType {
     // Get the type of the strop created by the expression
     using result_strop_type =
-        typename std::result_of<smls_grammar(const Expr &, Engine *)>::type;
+        typename std::invoke_result<smls_grammar, const Expr &, Engine *>::type;
     // Extract the output type
     using type = strop_return_type<remove_reference_t<result_strop_type>>;
   };

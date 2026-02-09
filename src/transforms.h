@@ -34,6 +34,7 @@
 
 #include <boost/mpl/assert.hpp>
 #include <boost/type_traits.hpp>
+#include <type_traits>
 
 namespace streamulus {
 
@@ -77,7 +78,7 @@ struct generic_func : proto::callable {
   template <typename State, typename FArg>
   struct result<generic_func(State, FArg)> {
     using F = remove_const_t<remove_reference_t<FArg>>;
-    using R = typename std::result_of<F()>::type;
+    using R = typename std::invoke_result<F>::type;
     using type = const std::shared_ptr<Strop<R()>>;
   };
 
@@ -102,7 +103,7 @@ struct generic_func : proto::callable {
   struct result<generic_func(State, FArg, Arg1Strop)> {
     using F = remove_const_t<remove_reference_t<FArg>>;
     using Arg1Type = strop_return_type<Arg1Strop>;
-    using R = typename std::result_of<F(Arg1Type)>::type;
+    using R = typename std::invoke_result<F, Arg1Type>::type;
     using type = const std::shared_ptr<Strop<R(Arg1Type)>>;
   };
 
@@ -134,7 +135,7 @@ struct generic_func : proto::callable {
     using F = remove_const_t<remove_reference_t<FArg>>;
     using Arg1Type = strop_return_type<Arg1Strop>;
     using Arg2Type = strop_return_type<Arg2Strop>;
-    using R = typename std::result_of<F(Arg1Type, Arg2Type)>::type;
+    using R = typename std::invoke_result<F, Arg1Type, Arg2Type>::type;
     using type = const std::shared_ptr<Strop<R(Arg1Type, Arg2Type)>>;
   };
 
@@ -171,7 +172,8 @@ struct generic_func : proto::callable {
     using Arg1Type = strop_return_type<Arg1Strop>;
     using Arg2Type = strop_return_type<Arg2Strop>;
     using Arg3Type = strop_return_type<Arg3Strop>;
-    using R = typename std::result_of<F(Arg1Type, Arg2Type, Arg3Type)>::type;
+    using R =
+        typename std::invoke_result<F, Arg1Type, Arg2Type, Arg3Type>::type;
     using type = const std::shared_ptr<Strop<R(Arg1Type, Arg2Type, Arg3Type)>>;
   };
 
@@ -217,8 +219,8 @@ struct generic_func : proto::callable {
     using Arg2Type = strop_return_type<Arg2Strop>;
     using Arg3Type = strop_return_type<Arg3Strop>;
     using Arg4Type = strop_return_type<Arg4Strop>;
-    using R = typename std::result_of<F(Arg1Type, Arg2Type, Arg3Type,
-                                        Arg4Type)>::type;
+    using R = typename std::invoke_result<F, Arg1Type, Arg2Type, Arg3Type,
+                                          Arg4Type>::type;
     using type =
         const std::shared_ptr<Strop<R(Arg1Type, Arg2Type, Arg3Type, Arg4Type)>>;
   };
@@ -270,8 +272,8 @@ struct generic_func : proto::callable {
     using Arg3Type = strop_return_type<Arg3Strop>;
     using Arg4Type = strop_return_type<Arg4Strop>;
     using Arg5Type = strop_return_type<Arg5Strop>;
-    using R = typename std::result_of<F(Arg1Type, Arg2Type, Arg3Type, Arg4Type,
-                                        Arg5Type)>::type;
+    using R = typename std::invoke_result<F, Arg1Type, Arg2Type, Arg3Type,
+                                          Arg4Type, Arg5Type>::type;
 
     using type = const std::shared_ptr<
         Strop<R(Arg1Type, Arg2Type, Arg3Type, Arg4Type, Arg5Type)>>;
@@ -327,7 +329,7 @@ struct HandleTerminal : proto::callable {
   struct result<This(State, const std::shared_ptr<StropType> &)> {
     using StropPtrType = const std::shared_ptr<StropType> &;
     using type =
-        typename std::result_of<AddStropToGraph(State, StropPtrType)>::type;
+        typename std::invoke_result<AddStropToGraph, State, StropPtrType>::type;
   };
 
   template <class State, class This, class StropType>
@@ -346,7 +348,7 @@ struct HandleTerminal : proto::callable {
   template <class State, class This, class ConstType>
   struct result<This(State, ConstType)> {
     using type = const std::shared_ptr<
-        Strop<typename std::result_of<ConstFunc<ConstType>()>::type()>>;
+        Strop<typename std::invoke_result<ConstFunc<ConstType>>::type()>>;
   };
 
   template <class State, typename ConstType>

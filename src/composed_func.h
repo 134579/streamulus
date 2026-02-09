@@ -42,8 +42,8 @@ public:
   template <typename Signature> struct result;
 
   template <typename This, typename Arg> struct result<This(Arg)> {
-    using G_result_type = typename std::result_of<G(Arg)>::type;
-    using F_result_type = typename std::result_of<F(G_result_type)>::type;
+    using G_result_type = typename std::invoke_result<G, Arg>::type;
+    using F_result_type = typename std::invoke_result<F, G_result_type>::type;
     using type = F_result_type;
   };
 

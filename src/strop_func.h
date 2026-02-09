@@ -29,9 +29,10 @@
 
 namespace streamulus {
 template <class F, typename... Args>
-class Func : public Strop<typename std::result_of<F(Args...)>::type(Args...)> {
+class Func
+    : public Strop<typename std::invoke_result<F, Args...>::type(Args...)> {
 public:
-  using R = typename std::result_of<F(Args...)>::type;
+  using R = typename std::invoke_result<F,Args...>::type;
   using StropType = Strop<R(Args...)>;
 
   Func(const std::function<R(Args...)> &f) : mFunction(f), mInputExists(false) {
