@@ -21,6 +21,9 @@
 
 #pragma once
 
+#include "graph.h"
+#include <string>
+
 namespace streamulus {
 class Engine;
 

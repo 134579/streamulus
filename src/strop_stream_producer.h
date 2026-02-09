@@ -22,7 +22,6 @@
 #pragma once
 
 #include "cpp14_utils.h"
-#include "engine.h"
 #include "stream.h"
 #include "strop_base.h"
 

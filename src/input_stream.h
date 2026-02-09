@@ -22,8 +22,8 @@
 #pragma once
 
 #include "strop_data_source.h"
-
 #include <boost/make_shared.hpp>
+#include <boost/proto/proto.hpp>
 
 namespace streamulus {
 // Convenience utilities for defining input streams

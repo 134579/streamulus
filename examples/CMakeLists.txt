@@ -1,5 +1,3 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
-
 PROJECT(EXAMPLES CXX)
 
 add_executable(example_a A_hello_world.cpp)

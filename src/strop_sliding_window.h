@@ -21,6 +21,7 @@
 
 #pragma once
 
+#include "strop.h"
 #include <boost/circular_buffer.hpp>
 
 namespace streamulus {

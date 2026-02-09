@@ -18,11 +18,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Streamulus.  If not, see <http://www.gnu.org/licenses/>.
 //
-// clang-format off
-#include "../src/streamulus.h"
-#include "../src/sliding_window_library.h"
 #include "../src/sliding_window_func.h"
-// clang-format on
+#include "../src/sliding_window_library.h"
+#include "../src/streamulus.h"
 #include <iostream>
 
 // -------------------------------------------------------------------

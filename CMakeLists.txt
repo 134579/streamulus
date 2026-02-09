@@ -1,12 +1,12 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.30)
 project(streamulus)
 
-find_package(Boost 1.58.0)
+find_package(Boost CONFIG)
 
-if(NOT Boost_FOUND)
+if (NOT Boost_FOUND)
     message(FATAL_ERROR "Could not find boost!")
-endif()
-
+endif ()
+set(WARNING_FLAGS -Wall -Wextra -Wpedantic -Werror)
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories("src/")
 

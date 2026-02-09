@@ -35,9 +35,7 @@ template <typename Signature> class ComposedFunc;
 
 template <typename F, typename G> class ComposedFunc<F(G(ArgType))> {
 public:
-  explicit ComposedFunc(const F &f_ = F(), const G &g_ = G()) : f(f_), g(g_) {
-    std::cout << "Composed two functions!" << std::endl;
-  }
+  explicit ComposedFunc(const F &f_ = F(), const G &g_ = G()) : f(f_), g(g_) {}
 
   template <typename Signature> struct result;
 
