@@ -3,9 +3,6 @@ project(streamulus)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}\\..\\boost_1_58_0")
-set(BOOSTROOT "${CMAKE_CURRENT_SOURCE_DIR}\\..\\boost_1_58_0")
-
 find_package(Boost 1.58.0)
 
 if(NOT Boost_FOUND)
