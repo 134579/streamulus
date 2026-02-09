@@ -1,11 +1,3 @@
-# to run the tests: cmake, then make, then ctest
-
-find_package(Boost 1.58.0)
-
-if(NOT Boost_FOUND)
-    message(FATAL_ERROR "Could not find boost!")
-endif()
-
 include_directories(${Boost_INCLUDE_DIRS})
 
 include_directories("../src/")
