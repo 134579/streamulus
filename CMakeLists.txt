@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.3)
 project(streamulus)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-
 find_package(Boost 1.58.0)
 
 if(NOT Boost_FOUND)
@@ -12,7 +10,7 @@ endif()
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories("src/")
 
-add_definitions(-DUSE_MAIN -U__STRICT_ANSI__)
+add_definitions(-DUSE_MAIN)
 
 add_subdirectory(examples)
 

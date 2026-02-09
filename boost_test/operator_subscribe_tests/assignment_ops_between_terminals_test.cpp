@@ -27,42 +27,41 @@
 
 #include "op_subscribe_values_fixture.h"
 
-
 BOOST_FIXTURE_TEST_SUITE(operator_subscribe_test, ValuesFixture)
 
-    BOOST_AUTO_TEST_CASE(if_else_operator_between_terminals) {
-        RunTest((t1 = t2), (v1 = v2));
-        RunTest((t2 = t1), (v2 = v1));
+BOOST_AUTO_TEST_CASE(if_else_operator_between_terminals) {
+  RunTest((t1 = t2), (v1 = v2));
+  RunTest((t2 = t1), (v2 = v1));
 
-        RunTest(t1 <<= t2, v1 <<= v2);
-        RunTest(t2 <<= t1, v2 <<= v1);
+  RunTest(t1 <<= t2, v1 <<= v2);
+  RunTest(t2 <<= t1, v2 <<= v1);
 
-        RunTest(t1 >>= t2, v1 >>= v2);
-        RunTest(t2 >>= t1, v2 >>= v1);
+  RunTest(t1 >>= t2, v1 >>= v2);
+  RunTest(t2 >>= t1, v2 >>= v1);
 
-        RunTest(t1 *= t2, v1 *= v2);
-        RunTest(t2 *= t1, v2 *= v1);
+  RunTest(t1 *= t2, v1 *= v2);
+  RunTest(t2 *= t1, v2 *= v1);
 
-        RunTest(t1 /= t2, v1 /= v2);
-        RunTest(t2 /= t1, v2 /= v1);
+  RunTest(t1 /= t2, v1 /= v2);
+  RunTest(t2 /= t1, v2 /= v1);
 
-        RunTest(t1 %= t2, v1 %= v2);
-        RunTest(t2 %= t1, v2 %= v1);
+  RunTest(t1 %= t2, v1 %= v2);
+  RunTest(t2 %= t1, v2 %= v1);
 
-        RunTest(t1 += t2, v1 += v2);
-        RunTest(t2 += t1, v2 += v1);
+  RunTest(t1 += t2, v1 += v2);
+  RunTest(t2 += t1, v2 += v1);
 
-        RunTest(t1 -= t2, v1 -= v2);
-        RunTest(t2 -= t1, v2 -= v1);
+  RunTest(t1 -= t2, v1 -= v2);
+  RunTest(t2 -= t1, v2 -= v1);
 
-        RunTest(t1 &= t2, v1 &= v2);
-        RunTest(t2 &= t1, v2 &= v1);
+  RunTest(t1 &= t2, v1 &= v2);
+  RunTest(t2 &= t1, v2 &= v1);
 
-        RunTest(t1 |= t2, v1 |= v2);
-        RunTest(t2 |= t1, v2 |= v1);
+  RunTest(t1 |= t2, v1 |= v2);
+  RunTest(t2 |= t1, v2 |= v1);
 
-        RunTest(t1 ^= t2, v1 ^= v2);
-        RunTest(t2 ^= t1, v2 ^= v1);
-    }
+  RunTest(t1 ^= t2, v1 ^= v2);
+  RunTest(t2 ^= t1, v2 ^= v1);
+}
 
 BOOST_AUTO_TEST_SUITE_END()

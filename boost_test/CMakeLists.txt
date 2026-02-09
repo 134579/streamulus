@@ -1,8 +1,5 @@
 # to run the tests: cmake, then make, then ctest
 
-set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}\\..\\..\\boost_1_58_0")
-set(BOOSTROOT "${CMAKE_CURRENT_SOURCE_DIR}\\..\\..\\boost_1_58_0")
-
 find_package(Boost 1.58.0)
 
 if(NOT Boost_FOUND)
@@ -12,16 +9,10 @@ endif()
 include_directories(${Boost_INCLUDE_DIRS})
 
 include_directories("../src/")
-add_definitions(-DUSE_MAIN -U__STRICT_ANSI__)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-
-
-CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
+add_definitions(-DUSE_MAIN)
 
 PROJECT(UNITTEST CXX)
 SET(CMAKE_VERBOSE_MAKEFILE ON)
-
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wa,-mbig-ob")
 
 ADD_CUSTOM_TARGET(alltests ALL)
 
